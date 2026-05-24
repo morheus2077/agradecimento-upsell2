@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Oferta Especial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background: linear-gradient(180deg,#fff7ed 0%,#ffedd5 100%);
+  display:flex;
+  justify-content:center;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  width:100%;
+  max-width:480px;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(18px);
+  border-radius:34px;
+  padding:34px 24px;
+  text-align:center;
+  box-shadow:0 25px 70px rgba(251,146,60,.18);
+  animation:fadeUp .8s ease;
+}
+
+/* SUCCESS */
+.success{
+  width:60px;
+  height:60px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:30px;
+  font-weight:900;
+  margin-bottom:16px;
+  animation:pulse 1.6s infinite;
+}
+
+.badge{
+  display:inline-block;
+  background:#dcfce7;
+  color:#166534;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+/* SUBTEXT */
+.subtext{
+  font-size:14px;
+  color:#6b7280;
+  margin-bottom:18px;
+}
+
+/* TIMER */
+.timer-box{
+  padding:14px;
+  border-radius:16px;
+  font-weight:900;
+  margin:14px 0;
+  background:red;
+  color:white;
+  letter-spacing:1px;
+  transition:.3s;
+  animation:pulse 2s infinite;
+}
+
+/* ALERT */
+.alert{
+  background:linear-gradient(135deg,#ef4444,#f97316);
+  color:white;
+  padding:16px;
+  border-radius:18px;
+  margin-bottom:16px;
+  text-align:left;
+}
+
+/* SCROLL CTA */
+.scroll-cta{
+  width:100%;
+  border:none;
+  background:#111827;
+  color:white;
+  padding:16px;
+  border-radius:20px;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+  margin-bottom:16px;
+  animation:glow 2s infinite;
+}
+
+/* OFFER */
+.offer{
+  background:white;
+  border-radius:28px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  animation:fadeUp 1s ease;
+}
+
+.offer img{
+  width:200px;
+  border-radius:14px;
+  margin-bottom:12px;
+  animation:float 3s ease-in-out infinite;
+}
+
+.offer-title{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+/* CTA FINAL */
+.cta{
+  width:100%;
+  border:none;
+  background:linear-gradient(90deg,#fb923c,#f97316);
+  color:white;
+  padding:18px;
+  border-radius:22px;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+  animation:glow 1.8s infinite;
+  transition:.2s;
+}
+
+.cta:hover{
+  transform:scale(1.05);
+}
+
+/* EXIT */
+.exit{
+  margin-top:12px;
+  font-size:13px;
+  color:#6b7280;
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+/* NOTIFICAÇÕES */
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#111827;
+  color:white;
+  padding:12px 14px;
+  border-radius:14px;
+  font-size:13px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  opacity:0;
+  transform:translateY(20px);
+  transition:.4s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* CTA FIXO */
+.fixed-cta{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:linear-gradient(90deg,#fb923c,#f97316);
+  color:white;
+  padding:16px;
+  font-weight:900;
+  text-align:center;
+  cursor:pointer;
+  animation:glow 2s infinite;
+}
+
+/* ANIMAÇÕES */
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.04);}
+}
+
+@keyframes glow{
+  0%{box-shadow:0 0 0 rgba(249,115,22,0);}
+  50%{box-shadow:0 0 25px rgba(249,115,22,.6);}
+  100%{box-shadow:0 0 0 rgba(249,115,22,0);}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="success">✓</div>
+
+  <div class="badge">PAGAMENTO CONFIRMADO</div>
+
+  <div class="subtext">
+    🎉 Seu acesso já foi liberado
+  </div>
+
+  <!-- TIMER -->
+  <div class="timer-box" id="timerBox">
+    OFERTA EXPIRA EM: <span id="timer">10:00</span>
+  </div>
+
+  <!-- ALERT -->
+  <div class="alert">
+    ⚠️ Parabéns pela decisão! Mas cuidado: emagrecer rápido demais pode deixar a sua pele flácida.
+Não adianta perder peso e ter vergonha de olhar no espelho. Adicione o Protocolo Anti Flacidez à sua ordem por apenas R$22 e conquiste um corpo firme, tonificado e definido.
+  </div>
+
+  <!-- SCROLL CTA -->
+  <button class="scroll-cta"
+    onclick="document.getElementById('final').scrollIntoView({behavior:'smooth'})">
+    QUERO MINHA PELE FIRME
+  </button>
+
+  <!-- OFFER -->
+  <div class="offer">
+
+    <img src="flacidez-pos-emagrecimento.jpeg">
+
+    <div class="offer-title">
+      Protocolo anti flacidez
+    </div>
+
+    Método completo para acelerar resultados.
+
+  </div>
+
+  <!-- FINAL CTA -->
+  <div id="final"></div>
+
+  <button class="cta"
+    onclick="window.location.href='https://pay.hotmart.com/B105975202S?checkoutMode=10'">
+    QUERO GARANTIR AGORA
+  </button>
+
+  <div class="exit"
+    onclick="window.location.href='https://desafiodrrenanbotelho.com.br/jun26_area-de-membros'">
+    Não quero essa oferta
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FIXED CTA
+<div class="fixed-cta"
+     onclick="document.getElementById('final').scrollIntoView({behavior:'smooth'})">
+  🔥 GARANTIR MINHA VAGA AGORA
+</div> -->
+
+<script>
+
+/* TIMER */
+let time = 600;
+
+function updateTimer(){
+  let m = Math.floor(time/60);
+  let s = time%60;
+  if(s<10) s="0"+s;
+
+  const el = document.getElementById("timer");
+  el.innerText = `${m}:${s}`;
+
+  if(time <= 120){
+    document.getElementById("timerBox").style.background = "#ef4444";
+  }
+
+  if(time > 0) time--;
+}
+
+setInterval(updateTimer,1000);
+updateTimer();
+
+/* NOTIFICAÇÕES */
+const names = ["Ana","João","Marcos","Beatriz","Lucas","Pedro"];
+
+function showToast(){
+  const name = names[Math.floor(Math.random()*names.length)];
+  const toast = document.getElementById("toast");
+
+  toast.innerText = `🔥 ${name} acabou de comprar`;
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },3000);
+}
+
+setInterval(showToast,4000);
+
+</script>
+
+</body>
+</html>
